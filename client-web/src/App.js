@@ -6,6 +6,7 @@ import './App.css';
 //components
 import Navbar from "./components/NavBar";
 import HomePageComponent from './components/HomePageComponent';
+import AllResturantComponent from './components/AllResturantComponent';
 
 //context
 import { UserContext } from './Context/UserContext';
@@ -35,6 +36,9 @@ function App() {
             <UserContext.Provider value={{ user, dispatchUser }}>
               <HomePageComponent />
             </UserContext.Provider>
+          </Route>
+          <Route path="/all" >
+            <AllResturantComponent />
           </Route>
         </Switch>
       </div>
