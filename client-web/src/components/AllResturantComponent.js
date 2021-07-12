@@ -1,45 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import foodImg from '../assets/homepagefood.jpg';
+import Loader from "react-loader-spinner";
 
 
 const AllResturantComponent = () => {
     const [loading, setLoading] = useState(false);
     const [searchText, setSearchText] = useState('')
-    const [restArr, setResArr] = useState([{
-        name: 'mac',
-        img: foodImg
-    },
-    {
-        name: 'kfc',
-        img: foodImg
-    },
-    {
-        name: 'abo mazen',
-        img: foodImg
-    },
-    {
-        name: 'el gamed gedan',
-        img: foodImg
-    },
-    {
-        name: 'aywa ana wad moshkla el72ooooneee',
-        img: foodImg
-    }])
+    const [restArr, setResArr] = useState([]);
+    const [searchArr, setSearchArr] = useState([]);
 
-    /*  useEffect(() => {
-          if (!loading) {
-              
-              fetchResturants();
-          }
-      }, [loading])
-      const fetchResturants = () =>{
-           fetch(`${process.env.REACT_APP_BASE_URL}/restaurant/`)
-              .then(response => response.json())
-              .then(data => console.log(data));
-          setLoading(true);
-  
-      }*/
+    useEffect(() => {
+        if (!loading) {
+            fetchResturants();
+
+        }
+    }, [loading]);
+
+    useEffect(() => {
+        setSearchArr(restArr.filter(rest => {
+            return rest.name.includes(searchText);
+        }));
+    }, [searchText]);
+    const fetchResturants = () => {
+        fetch(`${process.env.REACT_APP_BASE_URL}/restaurant/`)
+            .then(response => response.json())
+            .then(data => {
+
+                setResArr(data.resturants);
+                setLoading(true);
+            });
+
+    }
     return (
         <div className="AllResturantDiv">
             <div className="AllResturantDiv1">
@@ -50,13 +41,16 @@ const AllResturantComponent = () => {
                     onChange={(e) => setSearchText(e.target.value)}
                     placeholder="Search Resturants"
                 />
-                <div className="AllResturantDiv2">
-                    {
-                        restArr.map(resturant => {
-                            return (<ResurantItem resturant={resturant} />)
-                        })
-                    }
-                </div>
+                {
+                    !loading ? (<Loader type="TailSpin" color="#00BFFF" height={80} width={80} />) : (<div className="AllResturantDiv2">
+                        {
+                            (searchText == '' ? restArr : searchArr).map(resturant => {
+                                return (<ResurantItem resturant={resturant} key={resturant._id} />)
+                            })
+                        }
+                    </div>)
+                }
+
             </div>
         </div>
     );
@@ -64,12 +58,12 @@ const AllResturantComponent = () => {
 
 
 const ResurantItem = (props) => {
-    const { name, img } = props.resturant;
+    const { name, logo } = props.resturant;
 
     return (
         <Link to={`/resturant/${name.replaceAll(' ', '-')}`} className="link">
             <div className="ResturantListItem">
-                <img src={img} alt="Food Image"></img>
+                <img src={logo} alt={name + ' image'}></img>
                 <p>{name}</p>
             </div>
         </Link>
