@@ -31,6 +31,27 @@
   border-radius: 30px;
 }
 
+.Footer {
+  
+  bottom: 0;
+  background-color: black;
+  padding: 50px 150px 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between
+}
+.Footer div{
+  width: 300px;
+}
+
+.FollowThrough{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
 .HomePageCenterDiv {
   background-color: #ffeee5;
   min-height: 350px;

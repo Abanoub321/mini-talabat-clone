@@ -7,7 +7,7 @@ import './App.css';
 import Navbar from "./components/NavBar";
 import HomePageComponent from './components/HomePageComponent';
 import AllResturantComponent from './components/AllResturantComponent';
-
+import Footer from './components/Footer'
 //context
 import { UserContext } from './Context/UserContext';
 
@@ -41,6 +41,7 @@ function App() {
             <AllResturantComponent />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
