@@ -5,9 +5,10 @@ import './App.css';
 
 //components
 import Navbar from "./components/NavBar";
+import Footer from './components/Footer'
 import HomePageComponent from './components/HomePageComponent';
 import AllResturantComponent from './components/AllResturantComponent';
-import Footer from './components/Footer'
+import ResturantComponent from './components/ResturantComponent';
 //context
 import { UserContext } from './Context/UserContext';
 
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/all" >
             <AllResturantComponent />
+          </Route>
+          <Route path="/resturant/:resturantName" >
+            <ResturantComponent />
           </Route>
         </Switch>
         <Footer />

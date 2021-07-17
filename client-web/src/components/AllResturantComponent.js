@@ -58,10 +58,17 @@ const AllResturantComponent = () => {
 
 
 const ResurantItem = (props) => {
-    const { name, logo } = props.resturant;
+    const { name, logo , _id } = props.resturant;
 
     return (
-        <Link to={`/resturant/${name.replaceAll(' ', '-')}`} className="link">
+        <Link to={{
+            pathname: `/resturant/${name.replaceAll(' ', '-')}`,
+            state: {
+               _id
+              },
+        }
+        
+        } className="link">
             <div className="ResturantListItem">
                 <img src={logo} alt={name + ' image'}></img>
                 <p>{name}</p>
