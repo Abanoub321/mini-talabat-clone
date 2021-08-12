@@ -64,7 +64,8 @@ const ResurantItem = (props) => {
         <Link to={{
             pathname: `/resturant/${name.replaceAll(' ', '-')}`,
             state: {
-               _id
+               _id,
+               name:name.replaceAll(' ', '-')
               },
         }
         

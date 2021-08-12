@@ -9,8 +9,7 @@ const makeOrder = async (req, res) => {
             //header -> token
             "dishItems": ["{
                 orderId: ,
-                quantity : ,
-                type: //0 or 1
+                quantity : 
             }"]
             "restId":""
         }
@@ -47,20 +46,13 @@ const makeOrder = async (req, res) => {
             for (i = 0; i < dishItems.length; i++) {
                 let j;
                 let item;
-                if (dishItems[i].type == 0) {
-                    for (j = 0; j < menu.dishes.length; j++) {
-                        if (dishItems[i].orderId == menu.dishes[j]._id)
-                            break;
-                    }
-                    item = menu.dishes[j];
+
+                for (j = 0; j < menu.dishes.length; j++) {
+                    if (dishItems[i].orderId == menu.dishes[j]._id)
+                        break;
                 }
-                else {
-                    for (j = 0; j < menu.appetizers.length; j++) {
-                        if (dishItems[i].orderId == menu.appetizers[j]._id)
-                            break;
-                    }
-                    item = menu.appetizers[j]
-                }
+                item = menu.dishes[j];
+
                 totalPrice += item.price * dishItems[i].quantity;
 
                 item = {
@@ -116,4 +108,4 @@ const getOrder = async (req, res) => {
     }
 }
 
-module.exports = { makeOrder ,getOrder}
+module.exports = { makeOrder, getOrder }

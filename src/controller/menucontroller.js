@@ -74,11 +74,10 @@ const updateMenu = async (req, res) => {
     /*
         {
             menuId,
-            dishes :[ {name,price}],
-            appitizer :[{name,price}]
+            dishes :[ {name,price,info}]
         }
     */
-    const { menuId, dishes, appetizers } = req.body;
+    const { menuId, dishes } = req.body;
 
     if (!checker(menuId)) {
         return res.status(303).json({
@@ -91,8 +90,7 @@ const updateMenu = async (req, res) => {
             { _id: menuId },
             {
                 $addToSet: {
-                    dishes,
-                    appetizers
+                    dishes
                 }
             },
             {

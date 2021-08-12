@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -9,11 +9,21 @@ import Footer from './components/Footer'
 import HomePageComponent from './components/HomePageComponent';
 import AllResturantComponent from './components/AllResturantComponent';
 import ResturantComponent from './components/ResturantComponent';
+import ResturantMenu from './components/ResturantMenu';
+
+
 //context
 import { UserContext } from './Context/UserContext';
 
-function App() {
 
+import ResturantBranches from './components/ResturantBranches';
+import ResturantInfo from './components/ResturantInfo';
+
+function App() {
+  const [ order, setOrder ] = useState({
+    resturant: '',
+    order: []
+  })
   const userReducer = (state, action) => {
     if (action.type === 'Add_Adress')
       return {
@@ -41,8 +51,19 @@ function App() {
           <Route path="/all" >
             <AllResturantComponent />
           </Route>
-          <Route path="/resturant/:resturantName" >
+          <Route path="/resturant/:resturantName"  >
             <ResturantComponent />
+            <Switch>
+              <Route path="/resturant/:resturantName/menu" >
+                <ResturantMenu order={order} setOrder={setOrder} />
+              </Route>
+              <Route path="/resturant/:resturantName/about" >
+                <ResturantInfo />
+              </Route>
+              <Route path="/resturant/:resturantName/branches" >
+                <ResturantBranches />
+              </Route>
+            </Switch>
           </Route>
         </Switch>
         <Footer />

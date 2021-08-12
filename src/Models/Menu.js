@@ -8,24 +8,12 @@ const menuSchema = new mongoose.Schema({
     dishes: [{
         name: String,
         price: Number,
-        //quantity: Number
-    }],
-    appetizers: [{
-        name: String,
-        price: Number,
-        // quantity: Number
+        info:String
     }]
 
 });
 
-menuSchema.pre('updateOne', (next) => {
-    if (0 === this.appetizers.length) {
-        this.appetizers = undefined;
-    }
-    if (0 === this.dishes.length)
-        this.dishes = undefined;
-    next();
-})
+
 
 const Menu = mongoose.model('Menu', menuSchema);
 
