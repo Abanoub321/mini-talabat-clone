@@ -5,8 +5,8 @@ const requireLogin = require("../MiddleWares/requireLogin");
 const userRoute = express.Router();
 
 userRoute.post("/register",createUser);
-userRoute.get('/:userId',getUser);
 userRoute.post('/login',loginUser);
+userRoute.get('/').use(requireLogin,getUser);
 userRoute.put('/').use(requireLogin,updateUserAddress);
 
 module.exports = userRoute

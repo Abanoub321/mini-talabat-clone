@@ -29,7 +29,7 @@ const createUser = async (req, res) => {
             if (err)
                 return res.status(303).json({
                     status: 'ERROR',
-                    message: err,
+                    message: 'User Already exist',
                 })
             else
                 return res.status(200).json({
@@ -41,32 +41,16 @@ const createUser = async (req, res) => {
 
 
 const getUser = async (req, res) => {
-    /*
-    {
-        "userId":""
-    }
-    */
-
-    const { userId } = req.params;
-    if (!checker(userId)) {
+    if (!req.user)
         return res.status(303).json({
             status: 'ERROR',
-            message: 'You should send right id',
+            message: 'Something Went Wrong',
         })
-    }
-    else {
-        await User.findOne({ _id: userId }, (err, doc) => {
-            if (err)
-                return res.status(303).json({
-                    status: 'ERROR',
-                    message: err,
-                })
-            else
-                return res.status(200).json({
-                    user: doc
-                });
-        })
-    }
+    else
+        return res.status(200).json({
+            user: req.user
+        });
+
 }
 
 const loginUser = async (req, res) => {
@@ -106,8 +90,9 @@ const loginUser = async (req, res) => {
                 }
                 else {
                     const token = jwtoken.sign({ _id: doc._id }, process.env.JWTSECRET, { expiresIn: '1w' });
-                    res.status(200).header("auth-token", token).json({
-                        user: doc
+                    res.status(200).json({
+                        user: doc,
+                        token
                     });
                 }
             }
@@ -143,4 +128,4 @@ const updateUserAddress = async (req, res) => {
     })
 }
 
-module.exports = { createUser, getUser, loginUser,updateUserAddress }
+module.exports = { createUser, getUser, loginUser, updateUserAddress }

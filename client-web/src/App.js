@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -12,50 +12,137 @@ import ResturantComponent from './components/ResturantComponent';
 import ResturantMenu from './components/ResturantMenu';
 
 
-//context
-import { UserContext } from './Context/UserContext';
-
-
 import ResturantBranches from './components/ResturantBranches';
 import ResturantInfo from './components/ResturantInfo';
 
-function App() {
-  const [ order, setOrder ] = useState({
-    resturant: '',
-    order: []
-  })
-  const userReducer = (state, action) => {
-    if (action.type === 'Add_Adress')
+
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'add-dish':
+      {
+        const { quantity, restId, dish } = action.payload;
+
+        if (quantity == 0)
+          return state;
+        let newOrder = state.order;
+        if (newOrder.length == 0) {
+          if (state.resturant != restId) {
+            let order = [{ ...dish, quantity }];
+            return {
+              ...state,
+              resturant: restId,
+              order,
+
+            }
+          }
+        }
+
+        let newDish = { ...dish, quantity, resturant: restId };
+        newOrder.push(newDish)
+        return { ...state, order: newOrder }
+
+      }
+    case 'login': {
+      const { token, user } = action.payload.data;
+      localStorage.setItem('access-token', JSON.stringify(token));
+      console.log(user);
+      let newUser = {
+        name: user.name,
+        token,
+        phone: user.phoneNo
+      }
+      return { ...state, user: newUser }
+    }
+    case 'logout': {
+      localStorage.removeItem('access-token')
       return {
-        ...state,
-        address: action.payload
-      };
-    else
-      return undefined
+        ...state, user: {
+          name: '',
+          token: '',
+          phone: ''
+        }
+      }
+    }
+    case 'Check-Token': {
+
+      if (action.payload.exist)
+        return {
+          ...state,
+          user: action.payload.user
+        }
+      else
+        return { ...state }
+
+
+
+    }
+    default:
+      return state;
   }
+}
 
-  const [user, dispatchUser] = useReducer(userReducer, UserContext._currentValue);
+function App() {
+  const [state, dispatch] = useReducer(reducer, {
+    resturant: '',
+    order: [],
+    user: {
+      name: '',
+      token: '',
+      phone: ''
+    }
+  })
+  useEffect(() => {
+    CheckToken();
+  }, [])
 
+  const CheckToken = async () => {
+    const saved = localStorage.getItem('access-token');
+    const value = JSON.parse(saved);
+
+    if (!value) {
+      dispatch({ type: 'Check-Token', payload: { exist: false } })
+    }
+    else {
+      fetch(`${process.env.REACT_APP_BASE_URL}/user/`, {
+        method: 'get',
+        headers: {
+          'authorization': 'Bearer ' + value
+        }
+      }).then(response => response.json())
+        .then(data => {
+          const { name, phoneNo } = data.user;
+          // stuck in here
+          console.log(data.user);
+          let newUser = {
+            name: name,
+            token: value,
+            phone: phoneNo
+          };
+          dispatch({ type: 'Check-Token', payload: { exist: true, user: newUser } })
+        })
+    }
+  }
   return (
     <Router>
       <div className="App">
-        <UserContext.Provider value={{ user }}>
-          <Navbar />
-        </UserContext.Provider>
+
+        <Navbar numberOfDishes={state.order.length} dispatch={dispatch} userName={state.user.name} />
+
         <Switch>
           <Route exact path="/" >
-            <UserContext.Provider value={{ user, dispatchUser }}>
-              <HomePageComponent />
-            </UserContext.Provider>
+            <HomePageComponent />
           </Route>
+
           <Route path="/all" >
             <AllResturantComponent />
           </Route>
-          <Route path="/resturant/:resturantName"  >
+
+          <Route path="/resturant/:resturantName" >
             <ResturantComponent />
             <Switch>
               <Route path="/resturant/:resturantName/menu" >
-                <ResturantMenu order={order} setOrder={setOrder} />
+                <ResturantMenu dispatch={dispatch} />
               </Route>
               <Route path="/resturant/:resturantName/about" >
                 <ResturantInfo />
@@ -65,6 +152,13 @@ function App() {
               </Route>
             </Switch>
           </Route>
+
+          <Route path='/checkout'>
+              <div>
+                <p>this is checkout</p>
+              </div>
+          </Route>
+
         </Switch>
         <Footer />
       </div>

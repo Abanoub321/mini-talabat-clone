@@ -31,7 +31,18 @@
   border-color: white;
   border-radius: 30px;
 }
-
+.basket{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  color: white
+  
+}
+.basket p {
+  position: absolute;
+  margin-left: 50px;
+  margin-top: -1px;
+}
 .Footer {
   
   bottom: 0;
@@ -246,4 +257,137 @@
 .priceAndPlus p {
   font-size: large;
   margin-right: 25px;
+}
+
+
+
+
+.modal {
+  font-size: 12px;
+ background-color: white ;
+
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 15px 10px;
+}
+
+.contentHeader {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 40px 0px;
+  justify-content:space-evenly;
+  font-size: larger;
+  font-weight: bolder;
+}
+.contentHeader p{
+  padding-bottom: 8px;
+  margin: 0px 5px 0px;
+}
+.contentHeader p:hover {
+  cursor: pointer;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+
+.formContainer {
+
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 3px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+ 
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 8px;
+  height: 28px;
+  border-bottom: 1px solid rgb(187, 187, 187);
+  background-color: #ff5a00;
+  display: flex;
+  justify-content: center;
+}
+.menu-item:hover {
+  color: #2980b9;
 }

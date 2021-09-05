@@ -22,7 +22,7 @@ const ResturantMenu = (props) => {
             {
                 dishs.map(dish => {
                     return (
-                        <DishComponent dish={dish} order={props.order} setOrder={props.setOrder} restId={_id} />
+                        <DishComponent dish={dish} order={props.order} dispatch={props.dispatch} restId={_id} />
                     )
                 })
             }
@@ -30,29 +30,10 @@ const ResturantMenu = (props) => {
     );
 };
 const DishComponent = (props) => {
-    const { dish, order, setOrder, restId } = props;
+    const { dish, dispatch, restId } = props;
     const [quantity, setQuantity] = useState(0);
     const [display, setDisplay] = useState('none')
-    const onDishChoose = () => {
-        if(quantity == 0)
-            return;
-        let newOrder = order;
-        if (newOrder.order.length == 0) {
-            if (newOrder.resturant == '') {
-                newOrder.resturant = restId;
-            }
-            else if (newOrder.resturant != restId) {
-                setOrder({
-                    resturant: restId,
-                    order: []
-                })
-            }
-        }
-        let newDish = {...dish,quantity};
-        newOrder.order.push(newDish)
-        setOrder(newOrder);
-        console.log(order);
-    }
+   
 
     return (
         <div className='dishContainer' key={dish._id} onClick={() => setDisplay('')} >
@@ -73,7 +54,7 @@ const DishComponent = (props) => {
                     }}>-</p>
                 <p style={{ fontSize: 25 }} >{quantity}</p>
                 <p style={{ fontSize: 25 }} className='ResturantDivTopButton' onClick={() => setQuantity(quantity + 1)}>+</p>
-                <p className='ResturantDivTopButton' onClick={onDishChoose}>Add</p>
+                <p className='ResturantDivTopButton' onClick={()=>dispatch({type:'add-dish',payload:{dish,restId,quantity}})}>Add</p>
             </div>
         </div>
 
