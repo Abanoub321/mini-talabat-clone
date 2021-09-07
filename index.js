@@ -1,6 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const menuRoutes = require('./src/routes/menuRoute');
 const orderRoute = require('./src/routes/orderRoute');
 const resturantRoutes = require('./src/routes/resturantRouter');
@@ -11,7 +13,7 @@ const port = process.env.PORT;
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-
+app.use(cors());
 
 mongoose.connect(`${process.env.MONGODB_URI}`, {
   useNewUrlParser: true,

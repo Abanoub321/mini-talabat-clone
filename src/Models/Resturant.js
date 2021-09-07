@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
 
 const resturantSchema = new mongoose.Schema({
-    name : {
+    name: {
         type: String,
-        required:true,
+        required: true,
     },
     logo: {
-        type:String
+        type: String
     },
-    location: {
-        type:String,
-        required:true,
-    }
+    location: 
+        [{
+            place:String,
+            lat: Number
+            , lng: Number
+        }]
+    ,
+    info :{
+
+        type: String
+    } 
 });
 
-const Resturant = mongoose.model('Restaurant',resturantSchema);
+const Resturant = mongoose.model('Restaurant', resturantSchema);
 
 module.exports = Resturant;

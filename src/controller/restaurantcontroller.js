@@ -1,7 +1,7 @@
 const Resturant = require('../models/Resturant');
 
 const createResturant = async (req, res) => {
-    const { name, logo, location } = req.body;
+    const { name, logo, location ,info} = req.body;
     try {
         if (!name || !location)
             return res.status(500).json({
@@ -11,7 +11,8 @@ const createResturant = async (req, res) => {
         const resturant = await new Resturant({
             name,
             logo,
-            location
+            location,
+            info
         }).save();
 
         return res.status(200).json({
