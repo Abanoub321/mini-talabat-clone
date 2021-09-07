@@ -10,7 +10,7 @@ import HomePageComponent from './components/HomePageComponent';
 import AllResturantComponent from './components/AllResturantComponent';
 import ResturantComponent from './components/ResturantComponent';
 import ResturantMenu from './components/ResturantMenu';
-
+import CheckoutComponent from './components/CheckoutComponent';
 
 import ResturantBranches from './components/ResturantBranches';
 import ResturantInfo from './components/ResturantInfo';
@@ -154,9 +154,7 @@ function App() {
           </Route>
 
           <Route path='/checkout'>
-              <div>
-                <p>this is checkout</p>
-              </div>
+              <CheckoutComponent userName = {state.user.name} order={state.order} />
           </Route>
 
         </Switch>

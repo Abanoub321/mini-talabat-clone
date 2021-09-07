@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import {  useLocation } from "react-router-dom";
 import GoogleMapReact from 'google-map-react';
 
 const K_WIDTH = 30;
@@ -8,7 +8,7 @@ const K_HEIGHT = 30;
 
 const ResturantBranches = () => {
     const location = useLocation()
-    const { _id, branches } = location.state
+    const { branches } = location.state
 
     return (
         <div className="ResturantDivBottom">

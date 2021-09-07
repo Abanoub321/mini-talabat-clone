@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FaPlusCircle } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const ResturantMenu = (props) => {
     const location = useLocation()
@@ -48,7 +47,7 @@ const DishComponent = (props) => {
                 <p style={{ fontSize: 25 }}
                     className='ResturantDivTopButton'
                     onClick={() => {
-                        if (quantity == 0)
+                        if (quantity === 0)
                             return
                         setQuantity(quantity - 1);
                     }}>-</p>

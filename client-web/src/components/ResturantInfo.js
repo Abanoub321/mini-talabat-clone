@@ -1,9 +1,9 @@
-import React , {useEffect} from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const ResturantInfo = () => {
     const location = useLocation()
-    const { _id, info } = location.state
+    const { info } = location.state
    
     return (
         <div className="ResturantDivBottom">

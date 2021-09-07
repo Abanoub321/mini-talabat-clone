@@ -27,7 +27,7 @@ const ResturantComponent = () => {
         return (<div className="ResturantDiv">
             <div>
                 <div className="ResturantDivTop">
-                    <img src={resturant.logo} />
+                    <img src={resturant.logo} alt={`${name} logo`} />
                     <h1>{resturant.name}</h1>
                     <div className ='ResturantDivTopnavbar'>
                         <Link
@@ -75,13 +75,7 @@ const ResturantComponent = () => {
         </div>)
     }
 };
-const branches = () => {
-    /* return( <div className="ResturantDivBottom">
-     <p>{resturant.info}</p>
-     <Map location={resturant.location} />
- </div>)
- */
-}
+
 
 
 export default ResturantComponent;
