@@ -1,0 +1,416 @@
+
+.App {
+  margin: 0;
+  text-align: center;
+  color: white;
+  
+}
+
+.Navbar {
+  background-color: #ff5a00;
+  min-height: 60px;
+  display: flex;
+  padding: 20px 40px 0px;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.NavbarH2 {
+  margin: 0; 
+  text-decoration: none;
+  color: white;
+}
+.NavbarH3 {
+  text-decoration: none;
+  color: white;
+  margin: 0; 
+  height: fit-content;
+  padding: 0px 25px 0px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  border-radius: 30px;
+}
+.basket{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  color: white
+  
+}
+.basket p {
+  position: absolute;
+  margin-left: 50px;
+  margin-top: -1px;
+}
+.Footer {
+  
+  bottom: 0;
+  background-color: black;
+  padding: 50px 150px 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  
+}
+.Footer div{
+  width: 300px;
+}
+
+.FollowThrough{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.HomePageCenterDiv {
+  background-color: #ffeee5;
+  min-height: 350px;
+  padding: 80px 0px 20px;
+}
+
+.HomePageCenterDiv p {
+  color:black;
+  margin: 0px;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.HomePageCenterDiv div input {
+  margin: 25px;
+  padding: 5px;
+  width: 35%;
+}
+.link {
+  text-decoration: none;
+  color:initial
+}
+.HomePagButton {
+  text-decoration: none;
+  background-color: #ff5a00;
+  font-size:medium;
+  padding: 15px 40px 15px ;
+  border-style: none;
+  border-radius: 15px;
+  color: white;
+}
+.HomePageCenterDiv img{
+  width: 800px;
+  height: 600px;
+  border-radius: 30px;
+}
+
+.AllResturantDiv {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px 20px;
+ }
+.AllResturantDiv1{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 800px;
+  border-radius: 2px;
+  border-width: 0.2px;
+  border-style: solid;
+  border-top: 0px;
+  border-color: black;
+  box-shadow: 10px 10px 5px #ccc;
+  padding: 15px;
+  align-items: center;
+}
+.AllResturantDiv1 input {
+  align-self: flex-end;
+  width: 260px;
+  height: 30px;
+  padding-left: 5px;
+  margin-right: 25px;
+}
+
+.AllResturantDiv2{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  width: 800px;
+  flex-wrap: wrap;
+  
+}
+.ResturantListItem{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  margin: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #BEBEBE;
+  padding: 5px;
+  transition: all .2s ease-in-out;
+}
+.ResturantListItem img{
+  width: 150px;
+  height: 150px;
+}
+.ResturantListItem p{
+  width: 170px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ResturantListItem:hover { 
+  transform: scale(1.1); 
+
+ 
+  box-shadow: 10px 10px 5px #ccc;
+}
+
+.ResturantDiv {
+  display: flex;
+  justify-content: center;
+  color: black;
+  background-color: #f8f8ff;
+  padding: 0px 0px 20px;
+}
+.ResturantDiv div {
+  display: flex;
+  width: 1200px;
+  
+}
+.ResturantDivTop {
+  display: flex;
+  justify-content: center;
+  background-color:#FFF8DC;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 70px;
+}
+.ResturantDivTop img {
+  display: flex;
+  align-self: center;
+  height: 150px;
+  width: 150px;
+}
+.ResturantDivTopnavbar {
+  display: flex;
+  justify-content: center ;
+  flex-direction: row;
+ 
+}
+.ResturantDivTopButton {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 15%;
+  background-color: #ff5a00;
+  border-style: none;
+  padding: 3px;
+  border-radius: 10px;
+  color:white;
+  margin-left: 15px;
+}
+
+.ResturantDivBottom {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  margin: 0px 80px 20px;
+}
+
+.branchDiv {
+ display: flex;
+ flex-wrap: wrap;
+ font-size: larger;
+ justify-content:space-around;
+}
+
+.dishContainer {
+  border: 1px solid rgba(95, 91, 91, 0.192);
+  border-width: 0px 0px 2px 0px;
+}
+.dishContainer :hover{
+  cursor: pointer;
+}
+.dish {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+}
+.dishInfo {
+  color: #524c4c;
+  justify-self:normal;
+}
+.priceAndPlus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  
+}
+.priceAndPlus p {
+  font-size: large;
+  margin-right: 25px;
+}
+
+
+
+
+.modal {
+  font-size: 12px;
+ background-color: white ;
+
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 15px 10px;
+}
+
+.contentHeader {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 40px 0px;
+  justify-content:space-evenly;
+  font-size: larger;
+  font-weight: bolder;
+}
+.contentHeader p{
+  padding-bottom: 8px;
+  margin: 0px 5px 0px;
+}
+.contentHeader p:hover {
+  cursor: pointer;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+
+.formContainer {
+
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 3px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+ 
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 8px;
+  height: 28px;
+  border-bottom: 1px solid rgb(187, 187, 187);
+  background-color: #ff5a00;
+  display: flex;
+  justify-content: center;
+}
+.menu-item:hover {
+  color: #2980b9;
+}
+
+.checkout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.checkout  h1 {
+  color: black;
+  
+}
+
+table {
+  width: 80%;
+  margin: 20px;
+
+}
+
+
+table, th, td {
+  border:1px solid black;
+  color: black;
+}
